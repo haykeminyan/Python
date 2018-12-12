@@ -1,0 +1,53 @@
+# put your python code here
+a=int(input())
+b=int(input())
+c=int(input())
+d=int()
+e=int()
+f=int()
+j=int()
+if a>b:
+    if a>c:
+        print(a)
+        d=b-c
+        if d<0:
+            print(b)
+            print(c)
+        else:
+            print(c)
+            print(b)
+    else:
+        print(c)
+        print(b)
+        print(a)
+elif a>c:
+    print(b)
+    e=a-c
+    if e<0:
+        print(a)
+        print(c)
+    else:
+        print(c)
+        print(a)
+elif a==c:
+    f=a-b
+    if f<0:
+        print(b)
+        print(a)
+        print(c)
+    else:
+        print(a)
+        print(b)
+        print(c)
+elif a==b:
+    j=a-c
+    if j<0:
+        print(c)
+        print(b)
+        print(a)
+    else:
+        print(a)
+        print(c)
+        print(b)
+
+
