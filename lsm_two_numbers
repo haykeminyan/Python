@@ -1,0 +1,10 @@
+import math
+x=int(input())
+y=int(input())
+z=int()
+if x!=0 and y!=0:
+    z%x==0 
+    z%y==0
+    z=int(x*y/math.gcd(x,y))
+print(z)
+
