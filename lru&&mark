@@ -1,0 +1,48 @@
+import random
+ 
+#n=int(input()) #number of pages
+#k=int(input()) #cache number
+#a=input() # name of strategy
+ 
+n=3  # количество элементов в кэш
+hash = dict()
+cache = list()
+inputData = [1, 2, 3, 4, 1, 1, 2, 2, 2, 3, 3, 3, 5, 4]  # данные на вход
+ 
+#LRU
+for i in inputData:
+    if i not in cache:
+     if cache.__len__()<n:
+        cache.append(i)
+     else:
+        cache.pop(0)
+        cache.append(i)
+    #print(cache)
+ 
+#Mark
+for i in inputData:
+    if i not in hash.keys():
+        if len(hash) < n:
+            hash[i] = 0
+        else:
+            while True:
+                keys = hash.keys()
+                item = random.choice(list(keys))
+                if hash[item] == 0:
+                    hash.pop(item)
+                    break
+            hash[i] = 0
+    else:
+        if hash[i] != 1:
+            hash[i] = 1
+        else:
+            full_cache = True
+            for j in hash.keys():
+                if hash[j] == 0:
+                    full_cache = False
+                    break
+            if full_cache == True:
+                for j in hash.keys():
+                    hash[j] = 0
+ 
+   # print(hash)
