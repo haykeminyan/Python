@@ -1,0 +1,34 @@
+#  MPI задааем количество элементов в кеш и потом сами распределяем по хот и колд исходя лимита который заранее задем
+hash.clear()
+boarder = 250  # значение для разграничесния хот и колд зоны
+increase = 50  # на сколько увеличиваем значения
+countHot = 0   # разграничение хот и колд зоны в кеше
+cacheOrder = list()  # список для хранения КЭШ в нужной последовательности
+for i in inputData:
+    if i not in hash:
+        if hash.__len__() < n:
+            hash[i] = 1
+            cacheOrder.append(i)
+        else:
+            num = cacheOrder.pop(0)
+            hash.pop(num)
+            hash[i] = 1
+            cacheOrder.insert(cacheOrder.__len__() - countHot, i)  # вставляем элемент в список в конец колд хоны
+    else:
+        num = hash[i]
+        hash[i] = num * increase
+        if hash[i] > boarder: # если значение больше границы то оно добавляется в хот зону
+            index = cacheOrder.index(i)
+            cacheOrder.pop(index)
+            cacheOrder.insert(cacheOrder.__len__()-countHot, i)
+            countHot += 1
+    if random.randint(1, 100) % 2 == 0: # рандомно уменьшаем ВСЕ счетчики
+        for j in hash.keys():
+            hash[j] /= 2
+            index = cacheOrder.index(j) # получаем ПОРЯДКОВЫЙ НОМЕР элемента в списке чтобы знать в какой он зоне
+            if (hash[j] < boarder) and (index > cacheOrder.__len__() - countHot): # проверка для элемента колд зоны
+                cacheOrder.pop(index)
+                cacheOrder.insert(0, j)
+                countHot -= 1
+    print(hash)
+    print(cacheOrder)
