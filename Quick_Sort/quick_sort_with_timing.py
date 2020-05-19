@@ -2,7 +2,7 @@ import random
 from random import choice,shuffle
 import time
 
-numbers=[i for i in range(15)]
+numbers=[random.randint(1,12) for i in range(15)]
 shuffle(numbers)
 print(numbers)
 arr=[]
