@@ -31,4 +31,4 @@
 
 
 ### P.S было выяснено при автоматическом тестировании, что объёмные текстовые заметки выходят за рамки окна.
-<!-- ![Image description]('file:///home/haykeminyan/%D0%97%D0%B0%D0%B3%D1%80%D1%83%D0%B7%D0%BA%D0%B8/Screenshot(15).png') -->
+![Image](https://github.com/haykeminyan/Python/blob/master/Test_Oblako_group/Proof.png)
