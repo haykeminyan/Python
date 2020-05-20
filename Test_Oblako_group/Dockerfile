@@ -1,6 +1,6 @@
 FROM joyzoursky/python-chromedriver:3.7-selenium
 
-WORKDIR /home/haykeminyan/Proj
+WORKDIR /home/haykeminyan/Python/Test_Oblako_group
 
 ADD test.py /
 

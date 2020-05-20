@@ -2,11 +2,6 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.chrome.options import Options
 from fake_useragent import UserAgent
 from selenium.webdriver.support.ui import Select
@@ -57,8 +52,7 @@ for element in options:
 list_of_categories = [i for i in list_of_categories if i]
 
 
-logging.info('Current list_of_categories are {}'.format(list_of_categories))
-print('We have the list of categories: {}'.format(list_of_categories))
+
 # нажатие на кнопку, которая выводит в окошке названия заметок
 browser.find_element_by_css_selector('.select2-selection__arrow').click()
 
