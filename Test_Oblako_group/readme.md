@@ -28,7 +28,9 @@
 ## Запуск докера при помощи:
 1. sudo docker build -t my-python-app .
 2. sudo docker run my-python-app python3 /test.py
-
+## Добавил две папки steps и example
+1. В steps лежит файл behave_test.py, а в example example.feature
+2. Запуск behave -i example.feature
 
 ### P.S было выяснено при автоматическом тестировании, что объёмные текстовые заметки выходят за рамки окна.
 ![Image](https://github.com/haykeminyan/Python/blob/master/Test_Oblako_group/Proof.png)
