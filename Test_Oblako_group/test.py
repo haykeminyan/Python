@@ -89,7 +89,7 @@ uppercase_words = [random.choice(string.ascii_uppercase) for i in range(7)]
 union_words = lowercase_words + uppercase_words
 
 # если мы выбрали создание, то должны выбрать и имя заголовка
-if some_word_in_list_category=='Создать новый список':
+if some_word_in_list_category == 'Создать новый список':
     shuffle(union_words)
     res_for_title = ''.join(union_words)
     logging.info('Title is {}'.format(res_for_title))
