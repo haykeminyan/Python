@@ -119,3 +119,7 @@ end = time.time()
 result_time = (float(end - start))
 logging.info('Iteration of testing is {}'.format(result_time))
 print("The result of testing is {}".format(result_time))
+div.col-lg-4:nth-child(10) > div:nth-child(1) > form:nth-child(5) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins
+form.edit_todo:nth-child(17) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)
+form.edit_todo:nth-child(22) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)
+div.col-lg-4:nth-child(30) > div:nth-child(1) > form:nth-child(3) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)
