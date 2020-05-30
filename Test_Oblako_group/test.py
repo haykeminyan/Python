@@ -5,7 +5,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from fake_useragent import UserAgent
 from selenium.webdriver.support.ui import Select
-import string,random,logging,time
+import string
+import random
+import logging
+import time
 from random import choice, shuffle
 from behave import given, when, then, step
 
@@ -22,7 +25,7 @@ href_addr = 'http://qa-assignment.oblakogroup.ru/board/:idhaykeminyan'
 ua = UserAgent()
 
 
-#настройки для браузера
+# настройки для браузера
 opts = Options()
 user_random = str(ua.random)
 opts.add_argument("user-agent={}".format(user_random))
@@ -43,14 +46,13 @@ start = time.time()
 # нажатие на кнопку открыть новое задание (+ на сайте)
 browser.find_element_by_css_selector('#add_new_todo').click()
 
-# получение всех имён заметок 
+# получение всех имён заметок
 select_box = browser.find_element_by_class_name("new_todo_fields")
 options = [x for x in select_box.find_elements_by_tag_name("option")]
 list_of_categories = []
 for element in options:
     list_of_categories.append(element.get_attribute("value"))
 list_of_categories = [i for i in list_of_categories if i]
-
 
 
 # нажатие на кнопку, которая выводит в окошке названия заметок
@@ -64,7 +66,7 @@ element = browser.find_element_by_css_selector(
 browser.execute_script("return arguments[0].scrollIntoView(true);", element)
 
 # после прокрутки необходимо выбрать категорию "Создать новый список", чтобы получить
-# доступ к созданию новых заметок. Помимо этого браузер видит все категории и 
+# доступ к созданию новых заметок. Помимо этого браузер видит все категории и
 # можно обратиться к любой существующей заметке
 select = Select(browser.find_element_by_class_name('select_category'))
 last_word_in_list_category = 'Создать новый список'
@@ -75,7 +77,7 @@ browser.find_element_by_css_selector('.select2').click()
 browser.find_element_by_css_selector('.select2-selection__arrow').click()
 select_new = Select(browser.find_element_by_class_name('select_category'))
 
-# рандомный выбор названия 
+# рандомный выбор названия
 some_word_in_list_category = choice(list_of_categories)
 logging.info('Chosen category is {}'.format(some_word_in_list_category))
 print("Here is random word from categories: {}".format(some_word_in_list_category))
@@ -83,7 +85,7 @@ select_new = Select(browser.find_element_by_class_name('select_category'))
 select_new.select_by_visible_text(some_word_in_list_category)
 browser.find_element_by_css_selector('.select2').click()
 
-# генерация рандомных букв разных регистров 
+# генерация рандомных букв разных регистров
 lowercase_words = [random.choice(string.ascii_lowercase) for i in range(7)]
 uppercase_words = [random.choice(string.ascii_uppercase) for i in range(7)]
 union_words = lowercase_words + uppercase_words
@@ -119,7 +121,3 @@ end = time.time()
 result_time = (float(end - start))
 logging.info('Iteration of testing is {}'.format(result_time))
 print("The result of testing is {}".format(result_time))
-div.col-lg-4:nth-child(10) > div:nth-child(1) > form:nth-child(5) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins
-form.edit_todo:nth-child(17) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)
-form.edit_todo:nth-child(22) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)
-div.col-lg-4:nth-child(30) > div:nth-child(1) > form:nth-child(3) > ul:nth-child(2) > table:nth-child(1) > tbody:nth-child(1) > tr:nth-child(1) > td:nth-child(2) > div:nth-child(1) > ins:nth-child(2)

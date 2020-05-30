@@ -1,4 +1,4 @@
-## -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -19,14 +19,15 @@ import os
 import pandas as pd
 import logging
 from selenium.webdriver.support.ui import Select
-import string,random
-from random import choice,shuffle
-href_addr='http://qa-assignment.oblakogroup.ru/board/:idhaykeminyan'
+import string
+import random
+from random import choice, shuffle
+href_addr = 'http://qa-assignment.oblakogroup.ru/board/:idhaykeminyan'
 ua = UserAgent()
-headers = {'User-Agent':str(ua.chrome)}
+headers = {'User-Agent': str(ua.chrome)}
 
 browser = webdriver.Chrome()
-browser.wait = WebDriverWait(browser,10)
+browser.wait = WebDriverWait(browser, 10)
 browser.get(href_addr)
 actions = ActionChains(browser)
 # def switcher(href_addr):
@@ -50,42 +51,41 @@ actions = ActionChains(browser)
 #     browser.find_element_by_css_selector('#submit_add_todo').click()
 for i in range(10):
     browser.find_element_by_css_selector('#add_new_todo').click()
-    select_box = browser.find_element_by_class_name("new_todo_fields") 
+    select_box = browser.find_element_by_class_name("new_todo_fields")
     options = [x for x in select_box.find_elements_by_tag_name("option")]
-    list_of_categories=[]
+    list_of_categories = []
     for element in options:
         list_of_categories.append(element.get_attribute("value"))
-    list_of_categories=[i for i in list_of_categories if i]
+    list_of_categories = [i for i in list_of_categories if i]
     print(list_of_categories)
 
     browser.find_element_by_css_selector('.select2-selection__arrow').click()
-    element =browser.find_element_by_css_selector('#select2-select_category-results')
-    browser.execute_script("return arguments[0].scrollIntoView(true);",element)
+    element = browser.find_element_by_css_selector(
+        '#select2-select_category-results')
+    browser.execute_script(
+        "return arguments[0].scrollIntoView(true);", element)
     select = Select(browser.find_element_by_class_name('select_category'))
-    last_word_in_list_category='Создать новый список'
+    last_word_in_list_category = 'Создать новый список'
     select.select_by_visible_text(last_word_in_list_category)
     browser.find_element_by_css_selector('.select2').click()
     browser.find_element_by_css_selector('.select2-selection__arrow').click()
     select_new = Select(browser.find_element_by_class_name('select_category'))
-
-
-
-    some_word_in_list_category=choice(list_of_categories)
+    some_word_in_list_category = choice(list_of_categories)
     print(some_word_in_list_category)
     select_new = Select(browser.find_element_by_class_name('select_category'))
     select_new.select_by_visible_text(some_word_in_list_category)
     browser.find_element_by_css_selector('.select2').click()
-    lowercase_words=[random.choice(string.ascii_lowercase) for i in range(7)]
-    uppercase_words=[random.choice(string.ascii_uppercase) for i in range(7)]
-    union_words=lowercase_words+uppercase_words
+    lowercase_words = [random.choice(string.ascii_lowercase) for i in range(7)]
+    uppercase_words = [random.choice(string.ascii_uppercase) for i in range(7)]
+    union_words = lowercase_words+uppercase_words
     shuffle(union_words)
-    res=''.join(union_words)
+    res = ''.join(union_words)
     time.sleep(2)
-    elem=browser.find_element_by_css_selector('#project_text')
+    elem = browser.find_element_by_css_selector('#project_text')
     elem.click()
     elem.send_keys(res)
     browser.find_element_by_css_selector('#project_title')
-    elem_1=browser.find_element_by_css_selector('#project_title')
+    elem_1 = browser.find_element_by_css_selector('#project_title')
     elem_1.click()
     elem_1.send_keys(res)
     browser.find_element_by_css_selector('#submit_add_todo').click()
@@ -108,4 +108,4 @@ for i in range(10):
 # elem.click()
 # elem.send_keys(res)
 # browser.find_element_by_css_selector('#submit_add_todo').click()
-#dw
+# dw
